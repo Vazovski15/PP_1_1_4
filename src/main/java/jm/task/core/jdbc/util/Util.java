@@ -6,11 +6,14 @@ import java.sql.SQLException;
 
 public final class Util {
     // реализуйте настройку соеденения с БД
+    private Util(){
 
-    final static String user = "root";
-    final static String password = "7943579";
-    final static String url = "jdbc:mysql://localhost:3306/MainbBase";
-    public static Connection connection;
+    }
+
+   private final static String user = "root";
+    private final static String password = "7943579";
+    private final static String url = "jdbc:mysql://localhost:3306/MainbBase";
+    private  static Connection connection;
 
     public static Connection getConnection()  {
 
@@ -24,5 +27,14 @@ public final class Util {
             // System.out.println("Нет соединения");
         }
         return connection;
+    }
+    public static void connectionClose(){
+        if (connection!=null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
+        }
     }
 }
