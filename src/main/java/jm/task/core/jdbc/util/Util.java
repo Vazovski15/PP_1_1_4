@@ -10,28 +10,28 @@ public final class Util {
 
     }
 
-   private final static String user = "root";
-    private final static String password = "7943579";
-    private final static String url = "jdbc:mysql://localhost:3306/MainbBase";
-    private  static Connection connection;
+   private final static String USER = "root";
+    private final static String PASSWORD = "7943579";
+    private final static String URL = "jdbc:mysql://localhost:3306/MainbBase";
+    private  static Connection CONNECTION;
 
     public static Connection getConnection()  {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, user, password);
-            connection.setAutoCommit(false);
+            CONNECTION = DriverManager.getConnection(URL, USER, PASSWORD);
+            CONNECTION.setAutoCommit(false);
             // System.out.println("Есть соединение");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             // System.out.println("Нет соединения");
         }
-        return connection;
+        return CONNECTION;
     }
     public static void connectionClose(){
-        if (connection!=null){
+        if (CONNECTION !=null){
             try {
-                connection.close();
+                CONNECTION.close();
             } catch (SQLException e) {
                e.printStackTrace();
             }
